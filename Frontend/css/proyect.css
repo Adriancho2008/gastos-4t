@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1e1b4b; /* Fondo oscuro morado/azulado similar a la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.card {
+    background-color: #111827;
+    width: 100%;
+    max-width: 400px;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    color: #d1d5db;
+    margin-bottom: 5px;
+    margin-top: 12px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+}
+
+input::placeholder {
+    color: #6b7280;
+}
+
+input:focus, select:focus {
+    border-color: #10b981;
+}
+
+.btn-guardar {
+    width: 100%;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.2s;
+}
+
+.btn-guardar:hover {
+    background-color: #059669;
+}
+
+.movimientos-titulo {
+    font-size: 14px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+}
+
+#movimientos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.movimiento-item {
+    background-color: #1f2937;
+    padding: 12px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #10b981; /* Color por defecto verde */
+}
+
+.movimiento-info .monto {
+    font-size: 14px;
+    font-weight: bold;
+    color: #10b981;
+}
+
+.movimiento-info .categoria {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 2px;
+}
+
+.btn-eliminar {
+    background: #374151;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-eliminar:hover {
+    background: #4b5563;
+}
