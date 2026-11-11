@@ -1,17 +1,17 @@
-conts mysql = require("mysql2")
+const mysql = require("mysql2")
 
  
 const pool = mysql.createPool({
-host: 'localhost'
-user: 'root'
-password: ''
-port: '3306'
-database: 'gestion_almacen_tech'
+host: 'localhost',
+user: 'root',
+password: '',
+port: '3306',
+database: 'Gastos'
 })
 
 
-module.esports = pool
+module.exports = pool.promise()
 
-MVC
+
 
 

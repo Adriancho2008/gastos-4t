@@ -1,4 +1,11 @@
 const database = require("../db/conexiondb")
 
 
-console.log(database.query("SELECT * FROM gastos", (err, result) => {
+const obtenerDatos = async (params) =>{
+    const resultado = await database.query("SELECT * FROM categoria")
+}
+
+
+
+
+obtenerDatos()

@@ -1,50 +1,41 @@
-DROP DATABASE IF EXISTS gestion_almacen_tech;
+CREATE DATABASE IF NOT EXISTS administracion_gastos;
+USE administracion_gastos;
 
-CREATE DATABASE gestion_almacen_tech;
-
-USE gestion_almacen_tech;
- 
-CREATE TABLE lotes_ingreso (
-    id_lote INT AUTO_INCREMENT PRIMARY KEY,
-    descripcion_lote VARCHAR(60),
-    unidades_recibidas INT,
-    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
+-- 1. Tabla de Categorías 
+CREATE TABLE IF NOT EXISTS categorias (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_categoria VARCHAR(50) NOT NULL UNIQUE
 );
- 
-CREATE TABLE salidas_stock (
-    id_salida INT AUTO_INCREMENT PRIMARY KEY,
-    costo_salida INT,
-    fecha_salida DATETIME DEFAULT CURRENT_TIMESTAMP,
-    categoria_gasto VARCHAR(60),
-    id_lote INT,
-    FOREIGN KEY (id_lote) REFERENCES lotes_ingreso(id_lote)
+
+-- 2. Tabla de Movimientos 
+CREATE TABLE IF NOT EXISTS movimientos (
+    id_movimiento INT AUTO_INCREMENT PRIMARY KEY,
+    monto DECIMAL(12, 2) NOT NULL,
+    fecha DATE NOT NULL,
+    id_categoria INT NOT NULL,
+    CONSTRAINT fk_movimiento_categoria 
+        FOREIGN KEY (id_categoria) 
+        REFERENCES categorias(id_categoria)
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE
 );
- 
 
-USE gestion_almacen_tech;
- 
+-- ==========================================
+--  AL MENOS 5 REGISTROS POR TABLA
+-- ==========================================
 
-INSERT INTO lotes_ingreso (descripcion_lote, unidades_recibidas) VALUES 
-('Importación de pantallas OLED', 120),
-('Lote de componentes electrónicos', 450),
-('Reposición de cables HDMI', 300),
-('Stock inicial de memorias RAM', 150),
-('Lote de fuentes de poder ATX', 80),
-('Adquisición de discos SSD NVMe', 200),
-('Lote de chasis para PC Gamer', 60),
-('Reposición de tarjetas gráficas', 40),
-('Importación de teclados mecánicos', 90),
-('Lote de ventiladores RGB', 250);
- 
- 
-INSERT INTO salidas_stock (costo_salida, categoria_gasto, id_lote) VALUES 
-(450000, 'Logística de importación', 1),
-(120000, 'Alquiler de bodega temporal', 1),
-(85000, 'Tasas aduaneras e impuestos', 1),
-(35000, 'Empaque y embalaje de componentes', 2),
-(25000, 'Mantenimiento de estanterías', 2),
-(280000, 'Envío express a sucursales', 6),
-(45000, 'Publicidad digital local', 6),
-(95000, 'Herramientas de diagnóstico', 5),
-(60000, 'Reparación de equipos de prueba', 5),
-(75000, 'Suministros de oficina', 10);
+-- 5 registros 'categorias'
+INSERT INTO categorias (nombre_categoria) VALUES 
+('Salario'),
+('Comida'),
+('Transporte'),
+('Entretenimiento'),
+('Servicios Públicos');
+
+-- 5 registros 'Movimientos'
+INSERT INTO movimientos (monto, fecha, id_categoria) VALUES 
+(250000.00, '2026-10-01', 1), -- Salario
+(60000.00, '2026-10-02', 2),  -- Comida
+(35000.00, '2026-10-03', 3),  -- Transporte
+(120000.00, '2026-10-04', 4), -- Entretenimiento
+(150000.00, '2026-10-05', 5); -- Servicios Públicos
