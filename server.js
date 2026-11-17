@@ -3,9 +3,7 @@ const app = express()
 let puerto = 3000
 
 
-app.get('/',(re1,res)=>{
-    res.send("test")
-})
+
 
 
 
