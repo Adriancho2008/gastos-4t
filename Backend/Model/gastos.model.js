@@ -5,9 +5,8 @@ class GastosModel{
     //CRUD
     //Read
     static async obtenerGastos(){
-        const resultado = await database.query("SELECT * FROM gastos")
-       //[datos][metadatos]
-        return resultado
+        const [rows] = await database.query('SELECT * FROM movimientos');
+return rows;
     }
 }
 
